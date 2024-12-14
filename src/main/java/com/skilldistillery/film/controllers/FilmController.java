@@ -1,18 +1,22 @@
 
-	package com.skilldistillery.film.controllers;
+package com.skilldistillery.film.controllers;
 
-	import org.springframework.stereotype.Controller;
-	import org.springframework.ui.Model;
-	import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-	@Controller
-	public class FilmController {
+import com.skilldistillery.film.data.FilmDAO;
 
-		@RequestMapping(path = {"/", "home.do"})
-		public String goHome(Model model) {
-		//	return "WEB-INF/home.jsp";
-			return"home";
-		}
+@Controller
+public class FilmController {
+
+	@Autowired
+	private FilmDAO filmDAO;
+
+	@RequestMapping(path = { "/", "home.do" })
+	public String goHome(Model model) {
+		// return "WEB-INF/home.jsp";
+		return "home";
 	}
-	
-
+}

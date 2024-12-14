@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Home</title>
 </head>
+<h1>Welcome to our Page</h1>
 <body>
 
 </body>

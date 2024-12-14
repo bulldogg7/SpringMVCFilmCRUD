@@ -64,7 +64,7 @@
 			Film?</label> <input type="number" id="replacementCost"
 			name="replacementCost" min="9.99" max="29.99" value="14.99"
 			step="1.0"><br> <br>
-		<!-- This section lets you choose how much the filn cost to replace, use name (replacementCost)-->
+		<!-- This section lets you choose how much the film cost to replace, use name (replacementCost)-->
 		<h3>Film Rating</h3>
 		<input type="radio" id="rating" name="rating" value="PG"> <label
 			for="LanguageId">1.) PG -- Parental Guidance Suggested</label><br>

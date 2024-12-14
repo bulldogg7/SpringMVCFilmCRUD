@@ -27,11 +27,18 @@
 				maxlength="255" placeholder="Superman" /> <br> <br> <input
 				class="btn btn-success" type="submit" value="Search By Keyword" />
 		</form>
+<<<<<<< HEAD
 		<br>
 		<br>
 		<form action="newFilm.do" method="GET">
 			<input type="submit" class="btn btn-outline btn-add"
 				value="Add New Film" title="Add New Film" />
+=======
+		<br> <br>
+		<form action="addFilm.do" method="GET">
+			<input type="submit" class="add-film-button" value="Add Film" />
+			<a href="newFilm.jsp">Add Film</a><br/>
+>>>>>>> 8cd6d907021cd60b04ffeefd065c78b2789eebda
 		</form>
 
 	</div>

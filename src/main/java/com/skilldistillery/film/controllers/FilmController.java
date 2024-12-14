@@ -19,4 +19,10 @@ public class FilmController {
 		// return "WEB-INF/home.jsp";
 		return "home";
 	}
+	
+	@RequestMapping(path = { "newFilm.jsp" })
+	public String goNewFilm(Model model) {
+		// return "WEB-INF/home.jsp";
+		return "newFilm";
+	}
 }

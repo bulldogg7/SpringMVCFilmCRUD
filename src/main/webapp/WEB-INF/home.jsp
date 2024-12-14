@@ -29,6 +29,7 @@
 		<br> <br>
 		<form action="addFilm.do" method="GET">
 			<input type="submit" class="add-film-button" value="Add Film" />
+			<a href="newFilm.jsp">Add Film</a><br/>
 		</form>
 	</div>
 </body>

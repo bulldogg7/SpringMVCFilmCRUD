@@ -1,9 +1,9 @@
-
 package com.skilldistillery.film.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skilldistillery.film.data.FilmDAO;
@@ -12,11 +12,15 @@ import com.skilldistillery.film.data.FilmDAO;
 public class FilmController {
 
 	@Autowired
-	private FilmDAO filmDAO;
-
+	private FilmDAO filmDao;
+	
 	@RequestMapping(path = { "/", "home.do" })
 	public String goHome(Model model) {
-		// return "WEB-INF/home.jsp";
 		return "home";
+	}
+
+	@GetMapping(path = { "newFilm.do" })
+	public String goNewFilm(Model model) {
+		return "newFilm";
 	}
 }

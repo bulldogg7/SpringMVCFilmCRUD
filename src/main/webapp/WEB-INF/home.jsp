@@ -14,22 +14,26 @@
 <body>
 	<div class="container">
 		<h2>Films</h2>
-		<form action="findFilm.do" method="GET">
-			<label for="find-id">Search Film By Id: </label> <input type="number"
-				name="film-id" min="1" step="1" placeholder="777" /><br> <br>
-			<input class="search-button" type="submit" value="Search By Id" />
+		<form action="readFilm.do" method="GET">
+			<label for="id" class="form-label">Search Film By Id: </label> <br>
+			<br> <input type="number" name="id" min="1" step="1"
+				placeholder="777" /><br> <br> <input
+				class="btn btn-success" type="submit" value="Search By ID" />
 		</form>
 		<br> <br>
-		<form action="findFilms.do" method="POST">
-			<label for="find-keyword">Search Film By
-				Keyword: </label><input type="text" name="keyword" minlength="1"
-				maxlength="255" placeholder="Superman" /> <br> <br>
-			<input class="search-button" type="submit" value="Search By Keyword" />
+		<form action="readFilms.do" method="POST">
+			<label for="name" class="form-label">Search Film by Keyword:
+			</label> <br> <br> <input type="text" name="name" minlength="0"
+				maxlength="255" placeholder="Superman" /> <br> <br> <input
+				class="btn btn-success" type="submit" value="Search By Keyword" />
 		</form>
-		<br> <br>
-		<form action="addFilm.do" method="GET">
-			<input type="submit" class="add-film-button" value="Add Film" />
+		<br>
+		<br>
+		<form action="newFilm.do" method="GET">
+			<input type="submit" class="btn btn-outline btn-add"
+				value="Add New Film" title="Add New Film" />
 		</form>
+
 	</div>
 </body>
 </html>

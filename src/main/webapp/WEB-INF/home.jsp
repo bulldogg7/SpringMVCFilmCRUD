@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,20 +14,20 @@
 <body>
 	<div class="container">
 		<h2>Films</h2>
-		<form action="Film" method="GET">
+		<form action="findFilm.do" method="GET">
 			<label for="find-id">Search Film By Id: </label> <input type="number"
 				name="film-id" min="1" step="1" placeholder="777" /><br> <br>
 			<input class="search-button" type="submit" value="Search By Id" />
 		</form>
 		<br> <br>
-		<form action="filmResults" method="POST">
-			<label for="find-keyword" class="form-label">Search Film By
-				Keyword: </label><input type="text" name="name" minlength="0"
+		<form action="findFilms.do" method="POST">
+			<label for="find-keyword">Search Film By
+				Keyword: </label><input type="text" name="keyword" minlength="1"
 				maxlength="255" placeholder="Superman" /> <br> <br>
 			<input class="search-button" type="submit" value="Search By Keyword" />
 		</form>
 		<br> <br>
-		<form action="newFilm" method="GET">
+		<form action="addFilm.do" method="GET">
 			<input type="submit" class="add-film-button" value="Add Film" />
 		</form>
 	</div>

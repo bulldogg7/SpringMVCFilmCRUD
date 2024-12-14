@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="6.0">
 	<display-name>MVCFilmSite</display-name>
 	<welcome-file-list>
-		<welcome-file>home.do</welcome-file>
+		<welcome-file>/</welcome-file>
 	</welcome-file-list>
 
 	<servlet>

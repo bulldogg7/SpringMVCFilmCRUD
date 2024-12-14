@@ -16,31 +16,23 @@
 		<h2>Films</h2>
 		<form action="readFilm.do" method="GET">
 			<label for="id" class="form-label">Search Film By Id: </label> <br>
-			<br> <input type="number" name="id" min="1" step="1"
+			<br> <input type="number" name="id" required="required" min="1" step="1"
 				placeholder="777" /><br> <br> <input
 				class="btn btn-success" type="submit" value="Search By ID" />
 		</form>
 		<br> <br>
 		<form action="readFilms.do" method="POST">
 			<label for="name" class="form-label">Search Film by Keyword:
-			</label> <br> <br> <input type="text" name="name" minlength="0"
+			</label> <br> <br> <input type="text" name="name" required="required"
 				maxlength="255" placeholder="Superman" /> <br> <br> <input
 				class="btn btn-success" type="submit" value="Search By Keyword" />
 		</form>
-<<<<<<< HEAD
 		<br>
 		<br>
 		<form action="newFilm.do" method="GET">
 			<input type="submit" class="btn btn-outline btn-add"
 				value="Add New Film" title="Add New Film" />
-=======
-		<br> <br>
-		<form action="addFilm.do" method="GET">
-			<input type="submit" class="add-film-button" value="Add Film" />
-			<a href="newFilm.jsp">Add Film</a><br/>
->>>>>>> 8cd6d907021cd60b04ffeefd065c78b2789eebda
 		</form>
-
 	</div>
 </body>
 </html>

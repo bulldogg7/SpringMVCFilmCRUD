@@ -17,12 +17,9 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
-		<servlet-name>newFilm</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-	</servlet>
+	
 	<servlet-mapping>
-		<servlet-name>newFilm</servlet-name>
+		<servlet-name>Film</servlet-name>
 		<url-pattern>/newFilm.jsp</url-pattern>
 	</servlet-mapping>
 

@@ -22,7 +22,7 @@ public class FilmController {
 	
 	@RequestMapping(path = { "newFilm.jsp" })
 	public String goNewFilm(Model model) {
-		// return "WEB-INF/home.jsp";
+		// return "WEB-INF/newFilm.jsp";
 		return "newFilm";
 	}
 }

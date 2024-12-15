@@ -42,6 +42,9 @@
 		<hr>
 		<p>
 			<strong>Actors:</strong> <!-- What is the call for this? -->
+		<c:forEach var="actor" items="${film.filmActors}">
+            <li>${actor}</li>
+        </c:forEach>
 		</p>
 		<hr>
 		<p>
@@ -62,7 +65,7 @@
 			<br>
 			<button type="submit" class="edit-button">Edit Film</button>
 		</form>
-		<br> <br>
+		<br>
 		<form action="deleteFilm.do" method="POST"
 			onsubmit="return window.confirm('Confirm Delete?');">
 			<div class="form-group">
@@ -71,6 +74,9 @@
 			</div>
 			<button type="submit" class="delete-button">Delete Film</button>
 		</form>
+		<br><br>
+		<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Go Back Home? </button>
+		
 	</div>
 </body>
 </html>

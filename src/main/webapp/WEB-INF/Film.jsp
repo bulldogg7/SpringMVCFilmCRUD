@@ -6,7 +6,6 @@
 <html>
 <head>
 <title>Film</title>
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>

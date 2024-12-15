@@ -60,4 +60,14 @@ public class FilmController {
 		//may need to return to a page that just says "successfully deleted (maybe other options?"
 		return "deleteFilm";
 	}
+	@GetMapping(path = { "updateFilm.do" })
+	public String goUpdateFilm(Model model) {
+		return "updateFilm";
+	}
+	@PostMapping(path = { "updateFilm.do" })
+	public String updateFilm(Film film, Model model) {
+	    System.out.println("Film data: " + film);
+	    film = filmDao.updateFilmById(film);
+	    return "redirect:/readFilm.do?id=" + film.getId();
+	}
 }

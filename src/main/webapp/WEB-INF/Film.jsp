@@ -34,17 +34,19 @@
 			<strong>Rating:</strong> ${film.rating}
 		</p>
 		<p>
-			<strong>Genre:</strong> <!-- What is the call for this? -->
+			<strong>Genre:</strong>
+			<!-- What is the call for this? -->
 		</p>
 		<p>
 			<strong>Special Features:</strong> ${film.specialFeatures}
 		</p>
 		<hr>
 		<p>
-			<strong>Actors:</strong> <!-- What is the call for this? -->
-		<c:forEach var="actor" items="${film.filmActors}">
-            <li>${actor}</li>
-        </c:forEach>
+			<strong>Actors:</strong>
+			<!-- What is the call for this? -->
+			<c:forEach var="actor" items="${film.filmActors}">
+				<li>${actor}</li>
+			</c:forEach>
 		</p>
 		<hr>
 		<p>
@@ -70,13 +72,13 @@
 			onsubmit="return window.confirm('Confirm Delete?');">
 			<div class="form-group">
 				<input type="hidden" class="form-control" id="id" name="id"
-					value="<c:out value='${film.id}' />">
+					value="<c:out value="${film.id}" />">
 			</div>
 			<button type="submit" class="delete-button">Delete Film</button>
 		</form>
-		<br><br>
-		<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Go Back Home? </button>
-		
+		<br>
+		<br>
+		<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Return To Home</button>
 	</div>
 </body>
 </html>

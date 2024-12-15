@@ -28,22 +28,22 @@
 			max="2024" value="2024"><br> <br>
 		<!--we get a new release year (need to use this variables "name" tag (newReleaseYear) to use in other classes-->
 		<h3>Film Language</h3>
-		    <input type="radio" id="languageId" name="languageId" value="1" required> 
+		    <input type="radio" id="languageId" name="languageId" value="1" required="required"> 
 			<label for="languageId">1.) English</label><br> 
 			
-			<input type="radio" id="languageId" name="languageId" value="2" > 
+			<input type="radio" id="languageId" name="languageId" value="2" required="required"> 
 			<label for="languageId">2.) Italian</label><br> 
 		
-			<input type="radio" id="languageId" name="languageId" value="3"> 
+			<input type="radio" id="languageId" name="languageId" value="3" required="required"> 
 			<label for="languageId">3.) Japanese</label><br> 
 			
-			<input type="radio" id="languageId" name="languageId" value="4"> 
+			<input type="radio" id="languageId" name="languageId" value="4" required="required"> 
 			<label for="languageId">4.) Mandarin</label><br>
 			
-			 <input type="radio" id="languageId" name="languageId" value="5"> 
+			 <input type="radio" id="languageId" name="languageId" value="5" required="required"> 
 			 <label for="language_id">5.) French</label><br> 
 			 
-			<input type="radio" id="languageId" name="languageId" value="6"> 
+			<input type="radio" id="languageId" name="languageId" value="6" required="required"> 
 			<label for="languageId">6.) German</label><br> <br>
 		<!-- This section will receive our language input, use name (languageId) -->
 		<h3>Rental Duration</h3>

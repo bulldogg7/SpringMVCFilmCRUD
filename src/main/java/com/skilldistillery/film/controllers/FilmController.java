@@ -57,7 +57,6 @@ public class FilmController {
 	@PostMapping(path = { "deleteFilm.do" })
 	public String goDeleteFilm(Film film, Model model) {
 		filmDao.deleteFilm(film);
-		
 		return "deleteFilm";
 	}
 	

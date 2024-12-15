@@ -16,6 +16,8 @@
 		<p>
 			<strong>Showing ${films.size()} Results</strong>
 		</p>
+				<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Return To Home</button>
+		
 		<hr>
 	</c:if>
 	<c:if test="${empty films}">

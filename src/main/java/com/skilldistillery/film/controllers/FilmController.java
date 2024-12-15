@@ -46,18 +46,19 @@ public class FilmController {
 	public String goNewFilm(Model model) {
 		return "newFilm";
 	}
-	
+
 	@PostMapping(path = { "newFilm.do" })
 	public String createNewFilm(Film film, Model model) {
-	    System.out.println("Film data: " + film);
-	    film = filmDao.createFilm(film);
-	    return "redirect:/readFilm.do?id=" + film.getId();
+		System.out.println("Film data: " + film);
+		film = filmDao.createFilm(film);
+		return "redirect:/readFilm.do?id=" + film.getId();
 	}
-	
+
 	@PostMapping(path = { "deleteFilm.do" })
 	public String goDeleteFilm(Film film, Model model) {
 		filmDao.deleteFilm(film);
-		//may need to return to a page that just says "successfully deleted (maybe other options?"
+		// may need to return to a page that just says "successfully deleted (maybe
+		// other options?"
 		return "deleteFilm";
 	}
 }

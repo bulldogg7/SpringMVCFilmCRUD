@@ -289,6 +289,7 @@ public class FilmDaoImpl implements FilmDAO {
 				film.setLanguage(results.getString("name"));
 				List<Actor> actorList = readActorsByFilmId(filmId);
 				film.setFilmActors(actorList);
+				film.setCategory(results.getString("film_category"));
 			}
 			results.close();
 			statement.close();
@@ -320,8 +321,9 @@ public class FilmDaoImpl implements FilmDAO {
 				String rating = results.getString("rating");
 				String specialFeatures = results.getString("special_features");
 				String language = results.getString("language");
+				String category = results.getString("film_category");
 				Film film = new Film(filmId, title, description, releaseYear, languageId, rentalDuration, rate, length,
-						replacementCost, rating, specialFeatures, language);
+						replacementCost, rating, specialFeatures, language, category);
 				films.add(film);
 			}
 			results.close();
@@ -355,8 +357,9 @@ public class FilmDaoImpl implements FilmDAO {
 				String rating = results.getString("rating");
 				String specialFeatures = results.getString("special_features");
 				String language = results.getString("language");
+				String category = results.getString("film_category");
 				Film film = new Film(filmId, title, description, releaseYear, languageId, rentalDuration, rate, length,
-						replacementCost, rating, specialFeatures, language);
+						replacementCost, rating, specialFeatures, language, category);
 				film.setFilmActors(readActorsByFilmId(filmId));
 				films.add(film);
 			}
@@ -376,7 +379,7 @@ public class FilmDaoImpl implements FilmDAO {
 		try {
 			Connection connection = DriverManager.getConnection(URL, user, password);
 			String sqlText = "SELECT film.id, title, description, release_year, rental_duration, rental_rate, length, "
-					+ "replacement_cost, rating, special_features,"
+					+ "replacement_cost, rating, special_features, film_category,"
 					+ "language.name AS language_name " + "FROM film "
 					+ "JOIN language ON film.language_id = language.id " 
 					+ "WHERE title LIKE ? OR description LIKE ?";
@@ -399,6 +402,7 @@ public class FilmDaoImpl implements FilmDAO {
 				film.setReplacementCost(results.getDouble("replacement_cost"));
 				film.setRating(results.getString("rating"));
 				film.setSpecialFeatures(results.getString("special_features"));
+				film.setCategory(results.getString("film_category"));
 				film.setFilmActors(this.readActorsByFilmId(film.getId()));
 				films.add(film);
 			}

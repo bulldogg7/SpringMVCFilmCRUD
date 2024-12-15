@@ -34,8 +34,7 @@
 			<strong>Rating:</strong> ${film.rating}
 		</p>
 		<p>
-			<strong>Genre:</strong>
-			<!-- What is the call for this? -->
+			<strong>Genre:</strong> ${film.category}
 		</p>
 		<p>
 			<strong>Special Features:</strong> ${film.specialFeatures}

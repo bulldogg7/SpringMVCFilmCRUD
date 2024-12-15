@@ -202,8 +202,8 @@ public class FilmDaoImpl implements FilmDAO {
 			connection = DriverManager.getConnection(URL, user, password);
 			connection.setAutoCommit(false);
 			String sqlTxt = "INSERT INTO film (title, description,release_year,language_id,rental_duration,"
-							+ "rental_rate,length,replacement_cost,rating) "
-							+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+							+ "rental_rate,length,replacement_cost,rating, special_features) "
+							+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 			PreparedStatement statement = connection.prepareStatement(sqlTxt, Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, film.getTitle());
 			statement.setString(2, film.getDescription());
@@ -226,6 +226,7 @@ public class FilmDaoImpl implements FilmDAO {
 			} else {
 				statement.setNull(9, java.sql.Types.VARCHAR);
 			}
+			statement.setString(10, film.getSpecialFeatures());
 			int updateCount = statement.executeUpdate();
 			if (updateCount == 1) {
 				ResultSet results = statement.getGeneratedKeys();

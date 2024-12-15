@@ -11,8 +11,7 @@
 </head>
 <h1>The Film has been Successfully Deleted!</h1>
 <body>
-
-	<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Go Back Home? </button>
-	
+	<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Return
+		To Home</button>
 </body>
 </html>

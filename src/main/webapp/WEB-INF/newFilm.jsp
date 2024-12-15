@@ -23,11 +23,12 @@
 		<br>
 		<!--we get a new description (need to use this variables "name" tag (newDescription) to use in other classes-->
 		<h3>Release Year</h3>
-		<label for="releaseYear">Select the Year the Film Was Released:</label> <input
-			type="number" id="releaseYear" name="releaseYear" min="1930"
-			max="2024" value="2024"><br> <br>
+		<label for="releaseYear">Select the Year the Film Was
+			Released:</label> <input type="number" id="releaseYear" name="releaseYear"
+			min="1930" max="2024" value="2024"><br> <br>
 		<!--we get a new release year (need to use this variables "name" tag (newReleaseYear) to use in other classes-->
 		<h3>Film Language</h3>
+
 		    <input type="radio" id="languageId" name="languageId" value="1" required="required"> 
 			<label for="languageId">1.) English</label><br> 
 			
@@ -61,8 +62,8 @@
 		<!-- This section lets you add how much the film will cost, use name (rentalRate)-->
 		<h3>Film Length</h3>
 		<label for="length">Select the Film Length (in Minutes):</label> <input
-			type="number" id="length" name="length" min="45" max="185"
-			value="90" step="5"><br> <br>
+			type="number" id="length" name="length" min="45" max="185" value="90"
+			step="5"><br> <br>
 		<!-- This section lets you choose how long the film will be, use name (filmLength) -->
 		<h3>Replacement Cost</h3>
 		<label for="replacementCost">How Much is it to Replace the
@@ -74,14 +75,14 @@
 		<input type="radio" id="rating" name="rating" value="PG" required>
 		<label for="rating">1.) PG -- Parental Guidance Suggested</label><br>
 		<input type="radio" id="rating" name="rating" value="G"> <label
-			for="rating">2.) G -- General Audiences (All Ages)</label><br>
-		<input type="radio" id="rating" name="rating" value="NC17"> <label
+			for="rating">2.) G -- General Audiences (All Ages)</label><br> <input
+			type="radio" id="rating" name="rating" value="NC17"> <label
 			for="rating">3.) NC-17 -- No One 17 & Under Admitted</label><br>
 		<input type="radio" id="rating" name="rating" value="PG13"> <label
 			for="rating">4.) PG-13 -- Parents Strongly Cautioned</label><br>
 		<input type="radio" id="rating" name="rating" value="R"> <label
-			for="rating">6.) R -- Restricted (Under 17 Requires a
-			Parent)</label><br> <br>
+			for="rating">6.) R -- Restricted (Under 17 Requires a Parent)</label><br>
+		<br>
 		<!-- This section lets you choose the rating of the film, use name (rating)-->
 		<h3>Special Features</h3>
 		<input type="checkbox" id="specialFeatures" name="specialFeatures"
@@ -97,5 +98,9 @@
 		<!-- This section lets you choose what special features the film has use name (specialFeatures)-->
 		<input type="submit" class="submit-button" value="Add Film">
 	</form>
+	<br>
+	<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Return
+		To Home</button>
+
 </body>
 </html>

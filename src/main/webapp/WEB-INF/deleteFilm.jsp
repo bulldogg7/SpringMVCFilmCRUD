@@ -9,7 +9,10 @@
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 <link rel="stylesheet" href="styles.css" />
 </head>
+<h1>The Film has been Successfully Deleted!</h1>
 <body>
+
+	<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Go Back Home? </button>
 	
 </body>
 </html>

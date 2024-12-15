@@ -422,9 +422,9 @@ public class FilmDaoImpl implements FilmDAO {
 		try {
 			connection = DriverManager.getConnection(URL, user, password);
 			connection.setAutoCommit(false); // START TRANSACTION
-			String sqlTxt = "UPDATE film SET title = ?, description = ?, release_year = ?, "
-							+ "language_id = ?, rental_duration = ?,rental_rate = ?, length = ?, "
-							+ "replacement_cost = ?, rating = ?, special_features = ? WHERE id = ?";
+			String sqlTxt = "UPDATE film SET title = ?, description = ?, release_year = ?, language_id = ?, "
+					+ "rental_duration = ?, rental_rate = ?, length = ?, replacement_cost = ?, rating = ?,"
+					+ " special_features = ? WHERE id = ?;";
 			PreparedStatement statement = connection.prepareStatement(sqlTxt);
 			statement.setString(1, film.getTitle());
 			statement.setString(2, film.getDescription());
@@ -466,7 +466,7 @@ public class FilmDaoImpl implements FilmDAO {
 			}
 			throw new RuntimeException("Error Updating Film: " + sqle1.getMessage());
 		}
-		System.out.println("Updated Film" + film);
+		System.out.println("Updated Film: " + film);
 		return film;
 	}
 

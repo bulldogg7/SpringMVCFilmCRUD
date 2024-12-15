@@ -57,16 +57,20 @@ public class FilmController {
 	@PostMapping(path = { "deleteFilm.do" })
 	public String goDeleteFilm(Film film, Model model) {
 		filmDao.deleteFilm(film);
-		// may need to return to a page that just says "successfully deleted (maybe other options?)
 		return "deleteFilm";
 	}
+	
 	@GetMapping(path = { "updateFilm.do" })
-	public String goUpdateFilm(Model model) {
+	public String goUpdateFilm(@RequestParam(name = "id", required = true, defaultValue = "0") int id, Model model) {
+		Film film = null;
+		film = filmDao.readFilmById(id);
+		model.addAttribute("film", film);
 		return "updateFilm";
 	}
+	
 	@PostMapping(path = { "updateFilm.do" })
 	public String updateFilm(Film film, Model model) {
-	    System.out.println("Film data: " + film);
+	    System.out.println("Film data: " + film.getId());
 	    film = filmDao.updateFilmById(film);
 	    return "redirect:/readFilm.do?id=" + film.getId();
 	}

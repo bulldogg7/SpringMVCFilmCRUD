@@ -27,11 +27,13 @@
 		<table>
 			<thead>
 				<tr>
+					<th>ID</th>
 					<th>Title</th>
 					<th>Description</th>
-					<th>Rating</th>
+					<th>Release Year</th>
 					<th>Language</th>
-					<th>Rental Rate</th>
+					<th>Length</th>
+					<th>Rating</th>
 					<th>Special Features</th>
 					<th>Edit</th>
 					<th>Delete</th>
@@ -50,15 +52,15 @@
 							<tr>
 						</c:if>
 					</c:if>
+					<td>${film.id}</td>
 					<td><a
 						href="<c:url value='readFilm.do'><c:param name='id' value='${film.id}'/></c:url>">
-							${film.id}: ${film.title} </a></td>
-					<td>
-						<h5 class="card-text">${film.description}</h5>
-					</td>
-					<td>${film.rating}</td>
+							${film.title}</a></td>
+					<td>${film.description}</td>
+					<td>${film.releaseYear}</td>
 					<td>${film.language}</td>
-					<td>${film.rentalRate}</td>
+					<td>${film.length}</td>
+					<td>${film.rating}</td>
 					<td>${film.specialFeatures}</td>
 					<td>
 						<form action="updateFilm.do" method="GET">
@@ -71,7 +73,7 @@
 					</td>
 					<td>
 						<form action="deleteFilm.do" method="POST"
-							onsubmit="return window.confirm('Delete?');">
+							onsubmit="return window.confirm('Confirm Delete?');">
 							<div>
 								<input type="hidden" class="form-control" id="id" name="id"
 									value="<c:out value='${film.id}' />">

@@ -13,37 +13,45 @@
 	<h1>Film - ${film.id}</h1>
 	<div>
 		<p>
-			<b>Film ID: </b> ${film.id}
+			<strong>Film ID:</strong> ${film.id}
 		</p>
 		<p>
-			<b>Title:</b> ${film.title}
+			<strong>Title:</strong> ${film.title}
 		</p>
 		<p>
-			<b>Description:</b> ${film.description}
+			<strong>Description:</strong> ${film.description}
 		</p>
 		<p>
-			<b>Release Year:</b> ${film.releaseYear}
+			<strong>Release Year:</strong> ${film.releaseYear}
 		</p>
 		<p>
-			<b>Language:</b> ${film.language}
+			<strong>Language:</strong> ${film.language}
 		</p>
 		<p>
-			<b>Rental Duration:</b> ${film.rentalDuration}
+			<strong>Length (Minutes):</strong> ${film.length}
 		</p>
 		<p>
-			<b>Rental Rate:</b> ${film.rentalRate}
+			<strong>Rating:</strong> ${film.rating}
 		</p>
 		<p>
-			<b>Length:</b> ${film.length}
+			<strong>Genre:</strong> <!-- What is the call for this? -->
 		</p>
 		<p>
-			<b>Replacement Cost:</b> ${film.replacementCost}
+			<strong>Special Features:</strong> ${film.specialFeatures}
+		</p>
+		<hr>
+		<p>
+			<strong>Actors:</strong> <!-- What is the call for this? -->
+		</p>
+		<hr>
+		<p>
+			<strong>Rental Duration (Days):</strong> ${film.rentalDuration}
 		</p>
 		<p>
-			<b>Rating:</b> ${film.rating}
+			<strong>Daily Rental Rate:</strong> ${film.rentalRate}
 		</p>
 		<p>
-			<b>Special Features:</b> ${film.specialFeatures}
+			<strong>Replacement Cost:</strong> ${film.replacementCost}
 		</p>
 
 		<form action="updateFilm.do" method="GET">

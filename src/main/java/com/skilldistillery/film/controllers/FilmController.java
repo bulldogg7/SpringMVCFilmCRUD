@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.skilldistillery.film.data.FilmDAO;
@@ -31,7 +32,7 @@ public class FilmController {
 	}
 
 	@RequestMapping(path = { "readFilms.do" })
-	public String readFilmByKeyword(@RequestParam(name = "name", required = true, defaultValue = "") String name,
+	public String searchFilmsByKeyword(@RequestParam(name = "name", required = true, defaultValue = "") String name,
 			@RequestParam(name = "rating", required = false, defaultValue = "") String rating, Model model) {
 		List<Film> films = new ArrayList<>();
 		films = filmDao.readFilmsByKeyword(name);
@@ -44,5 +45,11 @@ public class FilmController {
 	@GetMapping(path = { "newFilm.do" })
 	public String goNewFilm(Model model) {
 		return "newFilm";
+	}
+	
+	@PostMapping(path = { "newFilm.do" })
+	public String createNewFilm(Film film, Model model) {
+			film = filmDao.createFilm(film);
+			return "readFilm.do?id=" + film.getId();
 	}
 }

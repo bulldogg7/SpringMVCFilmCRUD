@@ -36,5 +36,5 @@ public interface FilmDAO {
 		public Film updateFilmById(Film film);
 		
 		// DELETE
-		public boolean deleteFilm(int filmId);
+		public boolean deleteFilm(Film filmId);
 	}

@@ -468,15 +468,17 @@ public class FilmDaoImpl implements FilmDAO {
 
 	// DELETE
 	@Override
-	public boolean deleteFilm(int filmId) {
+	public boolean deleteFilm(Film filmId) {
 		boolean deleted = false;
 		Connection connection = null;
+		int idFilm = filmId.getId();
 		try {
 			connection = DriverManager.getConnection(URL, user, password);
 			connection.setAutoCommit(false);
 			String sqlTxt = "DELETE FROM film WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(sqlTxt);
-			statement.setInt(1, filmId);
+			
+			statement.setInt(1, filmId.getId());
 			int updateCount = statement.executeUpdate();
 			if (updateCount == 1) {
 				deleted = true;
@@ -493,7 +495,7 @@ public class FilmDaoImpl implements FilmDAO {
 					System.err.println("Error Initiating Rollback");
 				}
 			}
-			throw new RuntimeException("Error Deleting Film : " + filmId);
+			throw new RuntimeException("Error Deleting Film : " + idFilm);
 		}
 		return deleted;
 	}

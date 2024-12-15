@@ -57,8 +57,7 @@ public class FilmController {
 	@PostMapping(path = { "deleteFilm.do" })
 	public String goDeleteFilm(Film film, Model model) {
 		filmDao.deleteFilm(film);
-		// may need to return to a page that just says "successfully deleted (maybe
-		// other options?"
+		// may need to return to a page that just says "successfully deleted (maybe other options?)
 		return "deleteFilm";
 	}
 	@GetMapping(path = { "updateFilm.do" })

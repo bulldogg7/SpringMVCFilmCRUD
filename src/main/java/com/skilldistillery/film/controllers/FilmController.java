@@ -28,7 +28,7 @@ public class FilmController {
 		Film film = null;
 		film = filmDao.readFilmById(id);
 		model.addAttribute("film", film);
-		return "film";
+		return "Film";
 	}
 
 	@RequestMapping(path = { "readFilms.do" })
@@ -49,7 +49,9 @@ public class FilmController {
 	
 	@PostMapping(path = { "newFilm.do" })
 	public String createNewFilm(Film film, Model model) {
-			film = filmDao.createFilm(film);
-			return "readFilm.do?id=" + film.getId();
+	    System.out.println("Film data: " + film);
+	    film = filmDao.createFilm(film);
+	    return "redirect:/readFilm.do?id=" + film.getId();
 	}
+
 }

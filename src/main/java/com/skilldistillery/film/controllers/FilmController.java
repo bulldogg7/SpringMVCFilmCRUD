@@ -20,10 +20,6 @@ public class FilmController {
 
 	@GetMapping(path = { "newFilm.do" })
 	public String goNewFilm(Model model) {
-<<<<<<< HEAD
-		// return "WEB-INF/newFilm.jsp";
-=======
->>>>>>> 5f6b39d3750fc5da71d8833cd2ddb17d6bc1e6c9
 		return "newFilm";
 	}
 }

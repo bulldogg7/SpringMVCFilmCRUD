@@ -33,7 +33,7 @@
 			<strong>Rating:</strong> ${film.rating}
 		</p>
 		<p>
-			<strong>Genre:</strong> ${film.category}
+			<strong>Genre:</strong>
 		</p>
 		<p>
 			<strong>Special Features:</strong> ${film.specialFeatures}

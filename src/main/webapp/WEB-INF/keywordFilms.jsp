@@ -74,14 +74,19 @@
 						</form>
 					</td>
 					<td>
-						<form action="deleteFilm.do" method="POST"
-							onsubmit="return window.confirm('Confirm Delete?');">
-							<div>
-								<input type="hidden" class="form-control" id="id" name="id"
-									value="<c:out value='${film.id}' />">
-							</div>
-							<button type="submit" class="delete-button">Delete Film</button>
-						</form>
+						<c:if test="${film.id > 1000}">
+			<form action="deleteFilm.do" method="POST"
+				onsubmit="return window.confirm('Confirm Delete?');">
+				<div class="form-group">
+					<input type="hidden" class="form-control" id="id" name="id"
+						value="<c:out value='${film.id}' />">
+				</div>
+				<button type="submit" class="delete-button">Delete Film</button>
+			</form>
+		</c:if>
+		<c:if test="${film.id <= 1000}">
+			<p style="color: red;">Cannot Delete Original Film</p>
+		</c:if>
 					</td>
 				</c:forEach>
 			</tbody>

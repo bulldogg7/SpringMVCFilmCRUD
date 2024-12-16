@@ -33,7 +33,7 @@
 			<strong>Rating:</strong> ${film.rating}
 		</p>
 		<p>
-			<strong>Genre:</strong>
+			<strong>Genre:</strong> ${category.filmCategory}
 		</p>
 		<p>
 			<strong>Special Features:</strong> ${film.specialFeatures}
@@ -77,7 +77,7 @@
 			</form>
 		</c:if>
 		<c:if test="${film.id <= 1000}">
-			<p style="color: red;">This film cannot be deleted.</p>
+			<p style="color: red;">Cannot Delete Original Film</p>
 		</c:if>
 		<br> <br>
 		<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Return

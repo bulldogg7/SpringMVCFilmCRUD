@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
 import com.skilldistillery.film.entities.Actor;
+import com.skilldistillery.film.entities.Category;
 import com.skilldistillery.film.entities.Film;
 
 @Component
@@ -202,8 +203,8 @@ public class FilmDaoImpl implements FilmDAO {
 			connection = DriverManager.getConnection(URL, user, password);
 			connection.setAutoCommit(false);
 			String sqlTxt = "INSERT INTO film (title, description,release_year,language_id,rental_duration,"
-							+ "rental_rate,length,replacement_cost,rating, special_features) "
-							+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+					+ "rental_rate,length,replacement_cost,rating, special_features) "
+					+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 			PreparedStatement statement = connection.prepareStatement(sqlTxt, Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, film.getTitle());
 			statement.setString(2, film.getDescription());
@@ -289,7 +290,7 @@ public class FilmDaoImpl implements FilmDAO {
 				film.setLanguage(results.getString("name"));
 				List<Actor> actorList = readActorsByFilmId(filmId);
 				film.setFilmActors(actorList);
-//				film.setCategory(results.getString("film_category"));
+				film.setCategory(results.getString("film_category"));
 			}
 			results.close();
 			statement.close();
@@ -321,9 +322,9 @@ public class FilmDaoImpl implements FilmDAO {
 				String rating = results.getString("rating");
 				String specialFeatures = results.getString("special_features");
 				String language = results.getString("language");
-//				String category = results.getString("film_category");
+				String filmCategory = results.getString("film_category");
 				Film film = new Film(filmId, title, description, releaseYear, languageId, rentalDuration, rate, length,
-						replacementCost, rating, specialFeatures, language);
+						replacementCost, rating, specialFeatures, language, filmCategory);
 				films.add(film);
 			}
 			results.close();
@@ -357,9 +358,9 @@ public class FilmDaoImpl implements FilmDAO {
 				String rating = results.getString("rating");
 				String specialFeatures = results.getString("special_features");
 				String language = results.getString("language");
-//				String category = results.getString("film_category");
+				String filmCategory = results.getString("film_category");
 				Film film = new Film(filmId, title, description, releaseYear, languageId, rentalDuration, rate, length,
-						replacementCost, rating, specialFeatures, language);
+						replacementCost, rating, specialFeatures, language, filmCategory);
 				film.setFilmActors(readActorsByFilmId(filmId));
 				films.add(film);
 			}
@@ -379,10 +380,8 @@ public class FilmDaoImpl implements FilmDAO {
 		try {
 			Connection connection = DriverManager.getConnection(URL, user, password);
 			String sqlText = "SELECT film.id, title, description, release_year, rental_duration, rental_rate, length, "
-					+ "replacement_cost, rating, special_features,"
-					+ "language.name AS language_name " + "FROM film "
-					+ "JOIN language ON film.language_id = language.id " 
-					+ "WHERE title LIKE ? OR description LIKE ?";
+					+ "replacement_cost, rating, special_features," + "language.name AS language_name " + "FROM film "
+					+ "JOIN language ON film.language_id = language.id " + "WHERE title LIKE ? OR description LIKE ?";
 			keyword = "%" + keyword + "%";
 			PreparedStatement statement = connection.prepareStatement(sqlText);
 			statement.setString(1, keyword);
@@ -402,7 +401,6 @@ public class FilmDaoImpl implements FilmDAO {
 				film.setReplacementCost(results.getDouble("replacement_cost"));
 				film.setRating(results.getString("rating"));
 				film.setSpecialFeatures(results.getString("special_features"));
-//				film.setCategory(results.getString("film_category"));
 				film.setFilmActors(this.readActorsByFilmId(film.getId()));
 				films.add(film);
 			}
@@ -481,7 +479,6 @@ public class FilmDaoImpl implements FilmDAO {
 			connection.setAutoCommit(false);
 			String sqlTxt = "DELETE FROM film WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(sqlTxt);
-			
 			statement.setInt(1, filmId.getId());
 			int updateCount = statement.executeUpdate();
 			if (updateCount == 1) {
@@ -502,5 +499,31 @@ public class FilmDaoImpl implements FilmDAO {
 			throw new RuntimeException("Error Deleting Film : " + idFilm);
 		}
 		return deleted;
+	}
+
+	// READ CATEGORY
+	@Override
+	public Category readCategories(String filmCategory) {
+		Category category = null;
+		try {
+			Connection connection = DriverManager.getConnection(URL, user, password);
+			category = null;
+			String sqlText = "SELECT * FROM category";
+			PreparedStatement statement = connection.prepareStatement(sqlText);
+			statement.setString(1, filmCategory);
+			ResultSet results = statement.executeQuery();
+			while (results.next()) {
+				category = new Category();
+				category.setFilmCategory(results.getString("film_category"));
+			}
+			results.close();
+			statement.close();
+			connection.close();
+			return category;
+		} catch (SQLException sqle) {
+			System.out.println("Error Getting Category " + category);
+			sqle.printStackTrace();
+		}
+		return (category);
 	}
 }

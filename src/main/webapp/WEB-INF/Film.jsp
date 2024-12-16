@@ -6,7 +6,27 @@
 <html>
 <head>
 <title>Film</title>
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="CSS/styles.css" />
+<style>
+.submit-button {
+	padding: 5px 5px;
+	color: white;
+	background-color: #0AAA6D;
+	border-radius: 10px;
+}
+.edit-button {
+	padding: 5px 5px;
+	color: black;
+	background-color: #FECB43;
+	border-radius: 10px;
+}
+.delete-button {
+	padding: 5px 5px;
+	color: white;
+	background-color: #F8665E;
+	border-radius: 10px;
+}
+</style>
 </head>
 <body>
 	<h1>Film - ${film.id}</h1>
@@ -88,7 +108,7 @@
 			<p style="color: red;">Cannot Delete Original Film</p>
 		</c:if>
 		<br> <br>
-		<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Return
+		<button type="submit" class="submit-button" onclick="window.location.href='/MVCFilmSite/'">Return
 			To Home</button>
 	</div>
 </body>

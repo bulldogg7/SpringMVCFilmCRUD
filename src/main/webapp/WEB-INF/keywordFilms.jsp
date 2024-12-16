@@ -8,7 +8,27 @@
 <head>
 <title>Films By Keyword</title>
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="CSS/styles.css" />
+<style>
+.submit-button {
+	padding: 5px 5px;
+	color: white;
+	background-color: #0AAA6D;
+	border-radius: 10px;
+}
+.edit-button {
+	padding: 5px 5px;
+	color: black;
+	background-color: #FECB43;
+	border-radius: 10px;
+}
+.delete-button {
+	padding: 5px 5px;
+	color: white;
+	background-color: #F8665E;
+	border-radius: 10px;
+}
+</style>
 </head>
 <body>
 	<h1>Films By Keyword: '${keyword}'</h1>
@@ -16,8 +36,8 @@
 		<p>
 			<strong>Showing ${films.size()} Results</strong>
 		</p>
-				<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Return To Home</button>
-		
+		<button type="submit" class="submit-button" onclick="window.location.href='/MVCFilmSite/'">Return
+			To Home</button>
 		<hr>
 	</c:if>
 	<c:if test="${empty films}">
@@ -73,21 +93,18 @@
 							<button type="submit" class="edit-button">Edit Film</button>
 						</form>
 					</td>
-					<td>
-						<c:if test="${film.id > 1000}">
-			<form action="deleteFilm.do" method="POST"
-				onsubmit="return window.confirm('Confirm Delete?');">
-				<div class="form-group">
-					<input type="hidden" class="form-control" id="id" name="id"
-						value="<c:out value='${film.id}' />">
-				</div>
-				<button type="submit" class="delete-button">Delete Film</button>
-			</form>
-		</c:if>
-		<c:if test="${film.id <= 1000}">
-			<p style="color: red;">Cannot Delete Original Film</p>
-		</c:if>
-					</td>
+					<td><c:if test="${film.id > 1000}">
+							<form action="deleteFilm.do" method="POST"
+								onsubmit="return window.confirm('Confirm Delete?');">
+								<div class="form-group">
+									<input type="hidden" class="form-control" id="id" name="id"
+										value="<c:out value='${film.id}' />">
+								</div>
+								<button type="submit" class="delete-button">Delete Film</button>
+							</form>
+						</c:if> <c:if test="${film.id <= 1000}">
+							<p style="color: red;">Cannot Delete Original Film</p>
+						</c:if></td>
 				</c:forEach>
 			</tbody>
 		</table>

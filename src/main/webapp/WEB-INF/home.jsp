@@ -7,7 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Film Findr</title>
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="CSS/styles.css" />
+<style>
+.submit-button {
+	padding: 5px 5px;
+	color: white;
+	background-color: #0AAA6D;
+	border-radius: 10px;
+}
+</style>
 </head>
 <h1>Welcome to Film Findr!</h1>
 <body>
@@ -34,7 +42,7 @@
 		<br>
 
 		<form action="newFilm.do" method="GET">
-			<input type="submit" class="submit-button" value="Add New Film"
+			<input class="submit-button" type="submit" value="Add New Film"
 				title="Add New Film" />
 		</form>
 	</div>

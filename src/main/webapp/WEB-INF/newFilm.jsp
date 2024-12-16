@@ -7,7 +7,27 @@
 <head>
 <title>New Film</title>
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="CSS/styles.css" />
+<style>
+.submit-button {
+	padding: 5px 5px;
+	color: white;
+	background-color: #0AAA6D;
+	border-radius: 10px;
+}
+.edit-button {
+	padding: 5px 5px;
+	color: black;
+	background-color: #FECB43;
+	border-radius: 10px;
+}
+.delete-button {
+	padding: 5px 5px;
+	color: white;
+	background-color: #F8665E;
+	border-radius: 10px;
+}
+</style>
 </head>
 <body>
 	<h1>Add Film</h1>
@@ -99,7 +119,7 @@
 		<input type="submit" class="submit-button" value="Add Film">
 	</form>
 	<br>
-	<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Return
+	<button type="submit" class="submit-button" onclick="window.location.href='/MVCFilmSite/'">Return
 		To Home</button>
 </body>
 </html>

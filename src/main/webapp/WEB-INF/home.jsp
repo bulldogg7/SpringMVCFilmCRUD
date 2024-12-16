@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Film Findr</title>
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 <link rel="stylesheet" href="styles.css" />
 </head>
 <h1>Welcome to Film Findr!</h1>

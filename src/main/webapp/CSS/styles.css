@@ -1,14 +1,31 @@
 
-.submit-button:hover {
-	background-color: #fff;
-}
-input[type=button] .submit-button {
+.submit-button {
 	padding: 5px 5px;
 	color: white;
 	background-color: #0AAA6D;
 	border-radius: 10px;
 }
-
+.submit-button:hover {
+	background-color: #fff;
+}
+.edit-button {
+	padding: 5px 5px;
+	color: black;
+	background-color: #FECB43;
+	border-radius: 10px;
+}
+.edit-button:hover {
+	background-color: #fff;
+}
+.delete-button {
+	padding: 5px 5px;
+	color: white;
+	background-color: #F8665E;
+	border-radius: 10px;
+}
+.delete-button:hover {
+	background-color: #fff;
+}
 @media (prefers-color-scheme: dark) {
   :where(body) {
     --background-color: hsl(228, 5%, 15%);

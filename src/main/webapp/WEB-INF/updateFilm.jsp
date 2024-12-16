@@ -116,6 +116,7 @@
 			step="1.0"><br> <br> <input type="submit"
 			class="submit-button" value="Update Film">
 	</form>
+	<br>
 	<button type="submit" class="submit-button" onclick="window.location.href='/MVCFilmSite/'">Return
 		To Home</button>
 </body>

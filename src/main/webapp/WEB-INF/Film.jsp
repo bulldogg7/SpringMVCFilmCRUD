@@ -14,12 +14,14 @@
 	background-color: #0AAA6D;
 	border-radius: 10px;
 }
+
 .edit-button {
 	padding: 5px 5px;
 	color: black;
 	background-color: #FECB43;
 	border-radius: 10px;
 }
+
 .delete-button {
 	padding: 5px 5px;
 	color: white;
@@ -55,12 +57,9 @@
 		<hr>
 		<p>
 			<strong>Categories:</strong>
-			<!-- What is the call for this? -->
 			<c:forEach var="category" items="${film.filmCategory}">
-              <li>${category}</li>
-            </c:forEach>
-			
-
+				<li>${category}</li>
+			</c:forEach>
 		</p>
 		<hr>
 		<p>
@@ -108,8 +107,9 @@
 			<p style="color: red;">Cannot Delete Original Film</p>
 		</c:if>
 		<br> <br>
-		<button type="submit" class="submit-button" onclick="window.location.href='/MVCFilmSite/'">Return
-			To Home</button>
+		<button type="submit" class="submit-button"
+			onclick="window.location.href='/MVCFilmSite/'">Return To
+			Home</button>
 	</div>
 </body>
 </html>

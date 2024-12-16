@@ -398,7 +398,7 @@ public class FilmDaoImpl implements FilmDAO {
 				film.setLanguage(results.getString("language_name"));
 				film.setRentalDuration(results.getInt("rental_duration"));
 				film.setRentalRate(results.getDouble("rental_rate"));
-				film.setRentalDuration(results.getInt("length"));
+				film.setLength(results.getInt("length"));
 				film.setReplacementCost(results.getDouble("replacement_cost"));
 				film.setRating(results.getString("rating"));
 				film.setSpecialFeatures(results.getString("special_features"));

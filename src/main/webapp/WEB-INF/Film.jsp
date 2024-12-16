@@ -66,17 +66,22 @@
 			<button type="submit" class="edit-button">Edit Film</button>
 		</form>
 		<br>
-		<form action="deleteFilm.do" method="POST"
-			onsubmit="return window.confirm('Confirm Delete?');">
-			<div class="form-group">
-				<input type="hidden" class="form-control" id="id" name="id"
-					value="<c:out value="${film.id}" />">
-			</div>
-			<button type="submit" class="delete-button">Delete Film</button>
-		</form>
-		<br>
-		<br>
-		<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Return To Home</button>
+		<c:if test="${film.id > 1000}">
+			<form action="deleteFilm.do" method="POST"
+				onsubmit="return window.confirm('Confirm Delete?');">
+				<div class="form-group">
+					<input type="hidden" class="form-control" id="id" name="id"
+						value="<c:out value='${film.id}' />">
+				</div>
+				<button type="submit" class="delete-button">Delete Film</button>
+			</form>
+		</c:if>
+		<c:if test="${film.id <= 1000}">
+			<p style="color: red;">This film cannot be deleted.</p>
+		</c:if>
+		<br> <br>
+		<button type="submit" onclick="window.location.href='/MVCFilmSite/'">Return
+			To Home</button>
 	</div>
 </body>
 </html>

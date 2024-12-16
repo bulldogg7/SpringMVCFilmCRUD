@@ -3,29 +3,40 @@ package com.skilldistillery.film.entities;
 import java.util.Objects;
 
 public class Category {
-	private String filmCategory;
-
+	//fields
+	private int filmId;
+	private String name;
+	
+	//constructors
 	public Category() {
 		super();
 	}
-
-	public Category(String filmCategory) {
+	public Category(int filmId, String name) {
 		super();
-		this.filmCategory = filmCategory;
+		this.filmId = filmId;
+		this.name = name;
 	}
 	
-	public String getFilmCategory() {
-		return filmCategory;
+	//Getters and Setters for Category fields filmId and categoryId
+	public int getFilmId() {
+		return filmId;
 	}
-	public void setFilmCategory(String filmCategory) {
-		this.filmCategory = filmCategory;
+	public void setFilmId(int filmId) {
+		this.filmId = filmId;
 	}
-
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	//hashcode and equals
 	@Override
 	public int hashCode() {
-		return Objects.hash(filmCategory);
+		return Objects.hash(filmId, name);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -35,11 +46,14 @@ public class Category {
 		if (getClass() != obj.getClass())
 			return false;
 		Category other = (Category) obj;
-		return Objects.equals(filmCategory, other.filmCategory);
+		return filmId == other.filmId && Objects.equals(name, other.name);
 	}
-
+	//toString
+	
 	@Override
 	public String toString() {
-		return "Category [filmCategory=" + filmCategory + "]";
-	}	
+		return name;
+	}
+
+	
 }

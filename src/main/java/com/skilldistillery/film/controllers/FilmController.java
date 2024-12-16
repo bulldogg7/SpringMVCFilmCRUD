@@ -27,6 +27,7 @@ public class FilmController {
 	public String readFilmById(@RequestParam(name = "id", required = true, defaultValue = "0") int id, Model model) {
 		Film film = null;
 		film = filmDao.readFilmById(id);
+		System.out.println(film.getFilmCategory());
 		model.addAttribute("film", film);
 		return "Film";
 	}

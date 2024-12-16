@@ -128,36 +128,10 @@ public class FilmDaoImpl implements FilmDAO {
 		return actors;
 	}
 
-	@Override
-	public List<Actor> readActorsByFilmId(int filmId) {
-		Actor actor = null;
-		List<Actor> actorsList = new ArrayList<>();
-		try {
-			Connection connection = DriverManager.getConnection(URL, user, password);
-			String sqlText = "SELECT actor.* FROM actor JOIN film_actor on actor.id = film_actor.actor_id WHERE film_actor.film_id = ?";
-			PreparedStatement statement = connection.prepareStatement(sqlText);
-			statement.setInt(1, filmId);
-			ResultSet results = statement.executeQuery();
-			while (results.next()) {
-				actor = new Actor();
-				actor.setId(results.getInt("id"));
-				actor.setFirstName(results.getString("first_name"));
-				actor.setLastName(results.getString("last_name"));
-				actorsList.add(actor);
-			}
-			results.close();
-			statement.close();
-			connection.close();
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		}
-		return actorsList;
-	}
-
+	
 	// UPDATE
 	@Override
 	public Actor updateActor(Actor actor) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -260,37 +234,66 @@ public class FilmDaoImpl implements FilmDAO {
 	// READ
 	@Override
 	public Film readFilmById(int filmId) {
-		Film film = null;
+	    Film film = null;
+	    try (Connection connection = DriverManager.getConnection(URL, user, password)) {
+	        String sqlTxt = "SELECT film.*, language.name FROM film " +
+	                        "JOIN language ON film.language_id = language.id WHERE film.id = ?";
+	        PreparedStatement statement = connection.prepareStatement(sqlTxt);
+	        statement.setInt(1, filmId);
+	        ResultSet results = statement.executeQuery();
+
+	        if (results.next()) {
+	            film = new Film();
+	            film.setId(results.getInt("id"));
+	            film.setTitle(results.getString("title"));
+	            film.setDescription(results.getString("description"));
+	            film.setReleaseYear(results.getInt("release_year"));
+	            if (film.getReleaseYear() == 0) film.setReleaseYear(null);
+	            film.setLanguageId(results.getInt("language_id"));
+	            film.setRentalDuration(results.getInt("rental_duration"));
+	            film.setRentalRate(results.getDouble("rental_rate"));
+	            film.setLength(results.getInt("length"));
+	            if (film.getLength() == 0) film.setLength(null);
+	            film.setReplacementCost(results.getDouble("replacement_cost"));
+	            film.setRating(results.getString("rating"));
+	            film.setSpecialFeatures(results.getString("special_features"));
+	            film.setLanguage(results.getString("name"));
+
+	            // Fetch actors
+	            List<Actor> actorList = readActorsByFilmId(filmId);
+	            film.setFilmActors(actorList);
+
+	            // Fetch categories
+	            List<Category> categoryList = readCategoriesByFilmId(filmId);
+	            film.setFilmCategory(categoryList);
+	        }
+
+	        results.close();
+	        statement.close();
+	    } catch (SQLException sqle) {
+	        sqle.printStackTrace();
+	    }
+	    return film;
+	}
+
+	
+	//TODO make a semi-copy to read Categories by FilmId
+	@Override
+	public List<Actor> readActorsByFilmId(int filmId) {
+		Actor actor = null;
+		List<Actor> actorsList = new ArrayList<>();
 		try {
 			Connection connection = DriverManager.getConnection(URL, user, password);
-			film = null;
-			String sqlTxt = "SELECT film.*, language.name FROM film JOIN language on film.language_id = language.id WHERE film.id = ?";
-			PreparedStatement statement = connection.prepareStatement(sqlTxt);
+			String sqlText = "SELECT actor.* FROM actor JOIN film_actor on actor.id = film_actor.actor_id WHERE film_actor.film_id = ?";
+			PreparedStatement statement = connection.prepareStatement(sqlText);
 			statement.setInt(1, filmId);
 			ResultSet results = statement.executeQuery();
-			if (results.next()) {
-				film = new Film();
-				film.setId(results.getInt("Id"));
-				film.setTitle(results.getString("title"));
-				film.setDescription(results.getString("description"));
-				film.setReleaseYear(results.getInt("release_year"));
-				if (film.getReleaseYear() == 0) {
-					film.setReleaseYear(null);
-				}
-				film.setLanguageId(results.getInt("language_id"));
-				film.setRentalDuration(results.getInt("rental_duration"));
-				film.setRentalRate(results.getDouble("rental_rate"));
-				film.setLength(results.getInt("length"));
-				if (film.getLength() == 0) {
-					film.setLength(null);
-				}
-				film.setReplacementCost(results.getDouble("replacement_cost"));
-				film.setRating(results.getString("rating"));
-				film.setSpecialFeatures(results.getString("special_features"));
-				film.setLanguage(results.getString("name"));
-				List<Actor> actorList = readActorsByFilmId(filmId);
-				film.setFilmActors(actorList);
-				film.setCategory(results.getString("film_category"));
+			while (results.next()) {
+				actor = new Actor();
+				actor.setId(results.getInt("id"));
+				actor.setFirstName(results.getString("first_name"));
+				actor.setLastName(results.getString("last_name"));
+				actorsList.add(actor);
 			}
 			results.close();
 			statement.close();
@@ -298,8 +301,40 @@ public class FilmDaoImpl implements FilmDAO {
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
-		return (film);
+		return actorsList;
 	}
+	
+	// READ CATEGORY
+		@Override
+		public List<Category> readCategoriesByFilmId(int filmId) {
+			Category category = null;
+			List<Category> categoryList = new ArrayList<>();
+			try {
+				
+				Connection connection = DriverManager.getConnection(URL, user, password);
+				category = null;
+				String sqlText = "SELECT id, name FROM category JOIN film_category ON category.id = film_category.category_id WHERE film_id = ?";
+				//SELECT id, first_name, last_name FROM actor JOIN film_actor ON actor.id = film_actor.film_id WHERE actor_id = ?
+				PreparedStatement statement = connection.prepareStatement(sqlText);
+				statement.setInt(1, filmId);
+				ResultSet results = statement.executeQuery();
+				
+				while (results.next()) {
+					category = new Category();
+					category.setFilmId(results.getInt("id"));
+					category.setName(results.getString("name"));
+					categoryList.add(category);
+				}
+				results.close();
+				statement.close();
+				connection.close();
+				return categoryList;
+			} catch (SQLException sqle) {
+				System.out.println("Error Getting Category " + category);
+				sqle.printStackTrace();
+			}
+			return (categoryList);
+		}
 
 	@Override
 	public List<Film> readAllFilms() {
@@ -322,9 +357,8 @@ public class FilmDaoImpl implements FilmDAO {
 				String rating = results.getString("rating");
 				String specialFeatures = results.getString("special_features");
 				String language = results.getString("language");
-				String filmCategory = results.getString("film_category");
 				Film film = new Film(filmId, title, description, releaseYear, languageId, rentalDuration, rate, length,
-						replacementCost, rating, specialFeatures, language, filmCategory);
+						replacementCost, rating, specialFeatures, language);
 				films.add(film);
 			}
 			results.close();
@@ -358,9 +392,8 @@ public class FilmDaoImpl implements FilmDAO {
 				String rating = results.getString("rating");
 				String specialFeatures = results.getString("special_features");
 				String language = results.getString("language");
-				String filmCategory = results.getString("film_category");
 				Film film = new Film(filmId, title, description, releaseYear, languageId, rentalDuration, rate, length,
-						replacementCost, rating, specialFeatures, language, filmCategory);
+						replacementCost, rating, specialFeatures, language);
 				film.setFilmActors(readActorsByFilmId(filmId));
 				films.add(film);
 			}
@@ -501,29 +534,4 @@ public class FilmDaoImpl implements FilmDAO {
 		return deleted;
 	}
 
-	// READ CATEGORY
-	@Override
-	public Category readCategories(String filmCategory) {
-		Category category = null;
-		try {
-			Connection connection = DriverManager.getConnection(URL, user, password);
-			category = null;
-			String sqlText = "SELECT * FROM category";
-			PreparedStatement statement = connection.prepareStatement(sqlText);
-			statement.setString(1, filmCategory);
-			ResultSet results = statement.executeQuery();
-			while (results.next()) {
-				category = new Category();
-				category.setFilmCategory(results.getString("film_category"));
-			}
-			results.close();
-			statement.close();
-			connection.close();
-			return category;
-		} catch (SQLException sqle) {
-			System.out.println("Error Getting Category " + category);
-			sqle.printStackTrace();
-		}
-		return (category);
-	}
 }

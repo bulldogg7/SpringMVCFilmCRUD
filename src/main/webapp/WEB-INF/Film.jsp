@@ -32,9 +32,17 @@
 		<p>
 			<strong>Rating:</strong> ${film.rating}
 		</p>
+		<hr>
 		<p>
-			<strong>Genre:</strong> ${category.filmCategory}
+			<strong>Categories:</strong>
+			<!-- What is the call for this? -->
+			<c:forEach var="category" items="${film.filmCategory}">
+              <li>${category}</li>
+            </c:forEach>
+			
+
 		</p>
+		<hr>
 		<p>
 			<strong>Special Features:</strong> ${film.specialFeatures}
 		</p>

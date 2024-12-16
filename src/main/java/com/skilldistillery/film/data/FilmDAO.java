@@ -40,5 +40,5 @@ public interface FilmDAO {
 		public boolean deleteFilm(Film filmId);
 
 		// READ CATEGORY
-		Category readCategories(String filmCategory);
+		public List<Category> readCategoriesByFilmId(int filmId);
 	}
